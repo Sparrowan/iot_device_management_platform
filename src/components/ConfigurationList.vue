@@ -2,16 +2,23 @@
 import { storeToRefs } from 'pinia'
 import { useConfigurationStore } from '../stores/configuration'
 import { onMounted } from 'vue'
+import type { configurationState } from '../utils/types'
+import type { Ref } from 'vue'
 
 const configurationStore = useConfigurationStore()
 
-const { configurations, loading, error } = storeToRefs(configurationStore)
+const { configurations, loading, error } = storeToRefs(configurationStore) as {
+  configurations: Ref<configurationState['configurations']>
+  loading: Ref<configurationState['loading']>
+  error: Ref<configurationState['error']>
+}
 const { fetchConfigurations } = configurationStore
 
 onMounted(() => {
   fetchConfigurations()
 })
 
+// Log the configurations for debugging
 console.log('configurations', configurations.value)
 </script>
 

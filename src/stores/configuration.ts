@@ -2,7 +2,14 @@ import { defineStore } from 'pinia'
 import type { configurationType, configurationState } from '@/utils/types'
 import axios from 'axios'
 
-export const useConfigurationStore = defineStore('configuration', {
+export const useConfigurationStore = defineStore<
+  string,
+  configurationState,
+  {},
+  {
+    fetchConfigurations(): Promise<void>
+  }
+>('configuration', {
   state: (): configurationState => ({
     configurations: [],
     loading: false,
