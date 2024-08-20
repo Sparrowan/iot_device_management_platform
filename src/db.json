@@ -1,0 +1,44 @@
+{
+  "configs": [
+    {
+      "id": "b64b9d7e-5e2c-4b6d-9e59-f72c59417c8e",
+      "name": "Temperature Sensor",
+      "description": "Simulates a temperature sensor device.",
+      "content": {
+        "type": "sensor",
+        "unit": "Celsius",
+        "range": [-40, 125]
+      }
+    },
+    {
+      "id": "c4fda30b-4b84-4af6-9d30-cbe33a2a8a2f",
+      "name": "Humidity Sensor",
+      "description": "Simulates a humidity sensor device.",
+      "content": {
+        "type": "sensor",
+        "unit": "Percentage",
+        "range": [0, 100]
+      }
+    },
+    {
+      "id": "d3d9c0f7-23e9-4c3b-9631-b9e146ad4f7a",
+      "name": "Light Sensor",
+      "description": "Simulates a light sensor device.",
+      "content": {
+        "type": "sensor",
+        "unit": "Lux",
+        "range": [0, 100000]
+      }
+    },
+    {
+      "id": "f58927e6-8951-4e07-bb7e-02d9a76b3a21",
+      "name": "Motion Detector",
+      "description": "Simulates a motion detector device.",
+      "content": {
+        "type": "sensor",
+        "unit": "Binary",
+        "values": ["motion", "no motion"]
+      }
+    }
+  ]
+}
