@@ -8,3 +8,9 @@ export type configurationType = {
     values: string[] | number[]
   }
 }
+
+export type configurationState = {
+  configurations: configurationType[]
+  loading: boolean
+  error: string | null
+}
