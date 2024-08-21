@@ -2,21 +2,21 @@
 import { RouterLink } from 'vue-router'
 import { defineProps, ref, computed } from 'vue'
 import type { configurationType } from '../utils/types'
+import type { Ref } from 'vue'
 
 const props = defineProps<{ configuration: configurationType }>()
 
-const showFullDescription = ref(false)
+const showFullDescription: Ref<boolean> = ref(false)
 
 const toggleFullDescription = (): void => {
   showFullDescription.value = !showFullDescription.value
 }
 
 const truncatedDescription = computed((): string => {
-  let description = props.configuration.description
-  if (!showFullDescription.value) {
-    description = description.substring(0, 90) + '...'
-  }
-  return description
+  const description = props.configuration?.description || ''
+  return showFullDescription.value || description.length <= 90
+    ? description
+    : description.substring(0, 90) + '...'
 })
 </script>
 
@@ -24,8 +24,10 @@ const truncatedDescription = computed((): string => {
   <div class="bg-white rounded-xl shadow-md relative">
     <div class="p-4">
       <div class="mb-6">
-        <div class="text-gray-600 my-2">{{ configuration.type }}</div>
-        <h3 class="text-xl font-bold">{{ configuration.title }}</h3>
+        <div class="text-gray-600 my-2">
+          {{ configuration.content?.type?.toUpperCase() || 'N/A' }}
+        </div>
+        <h3 class="text-xl font-bold">{{ configuration?.name || 'Untitled' }}</h3>
       </div>
 
       <div class="mb-5">
@@ -37,17 +39,13 @@ const truncatedDescription = computed((): string => {
         </button>
       </div>
 
-      <h3 class="text-green-500 mb-2">{{ configuration.salary }} / Year</h3>
-
-      <div class="border border-gray-100 mb-5"></div>
-
       <div class="flex flex-col lg:flex-row justify-between mb-4">
         <div class="text-orange-700 mb-3">
           <i class="pi pi-map-marker text-orange-700"></i>
-          {{ configuration.location }}
+          {{ configuration?.location || 'Location not available' }}
         </div>
         <RouterLink
-          :to="'/configurations/' + configuration.id"
+          :to="'/configurations/' + (configuration?.id || '')"
           class="h-[36px] bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-center text-sm"
         >
           Read More

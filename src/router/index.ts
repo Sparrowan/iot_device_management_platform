@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import ConfigurationList from '../views/ConfigurationList.vue'
+import ConfigurationView from '../views/ConfigurationView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,6 +9,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: ConfigurationList
+    },
+    {
+      path: '/configurations/:id',
+      name: 'configuration',
+      component: ConfigurationView
     },
     {
       path: '/create-configuration',

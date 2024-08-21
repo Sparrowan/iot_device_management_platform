@@ -13,4 +13,5 @@ export type configurationState = {
   configurations: configurationType[]
   loading: boolean
   error: string | null
+  configuration: configurationType | null
 }
