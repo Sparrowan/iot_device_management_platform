@@ -26,6 +26,12 @@ bun install
 bun dev
 ```
 
+### Running Json Server for a mock api
+
+```sh
+bun run server
+```
+
 ### Type-Check, Compile and Minify for Production
 
 ```sh
