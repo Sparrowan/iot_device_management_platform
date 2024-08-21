@@ -11,7 +11,8 @@
           0,
           100000
         ]
-      }
+      },
+      "createdAt": "2024-07-21T14:50:15.332Z"
     },
     {
       "id": "f58927e6-8951-4e07-bb7e-02d9a76b3a21",
@@ -24,15 +25,17 @@
           "motion",
           "no motion"
         ]
-      }
+      },
+      "createdAt": "2024-07-21T14:53:15.332Z"
     },
     {
-      "id": "5bff",
-      "name": "test",
-      "description": "",
+      "name": "test updated",
+      "description": "An updated One.",
       "content": {
-        "1": "1"
-      }
+        "1": "3"
+      },
+      "updatedAt": "2024-08-21T15:04:02.644Z",
+      "id": "5bff"
     }
   ]
 }

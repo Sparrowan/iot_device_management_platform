@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { reactive, onMounted, watch } from 'vue'
+import { reactive, onMounted } from 'vue'
 import { useToast } from 'vue-toastification'
-import axios from 'axios'
 import JsonEditorVue from 'json-editor-vue'
 import { useConfigurationStore } from '../stores/configuration'
 import { useRouter, useRoute } from 'vue-router'
 import type { Ref } from 'vue'
 import type { configurationState } from '../utils/types'
 import { storeToRefs } from 'pinia'
+import { getTimeStamp } from '../utils/functions'
 
 const configurationStore = useConfigurationStore()
 
@@ -24,7 +24,7 @@ const form = reactive({
   content: { value: '' }
 })
 
-const { fetchConfigurations, addConfiguration } = configurationStore
+const { fetchConfigurations, addConfiguration, updateConfiguration } = configurationStore
 
 onMounted(async () => {
   await fetchConfigurations()
@@ -53,10 +53,13 @@ const handleSubmit = async () => {
   const newConfiguration = {
     name: form.name,
     description: form.description,
-    content: JSON.parse(form.content.value)
+    content: JSON.parse(form.content.value),
+    ...(configurationId ? { updatedAt: getTimeStamp() } : { createdAt: getTimeStamp() })
   }
   if (configurationId) {
-    // Handle updating existing configuration here
+    if (await updateConfiguration(newConfiguration)) {
+      router.push('/')
+    }
   } else {
     if (await addConfiguration(newConfiguration)) {
       router.push('/')
