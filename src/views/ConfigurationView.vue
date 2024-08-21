@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 import BackButton from '@/components/BackButton.vue'
-import { onMounted, ref, computed } from 'vue'
+import { onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import type { Ref } from 'vue'
@@ -10,8 +10,7 @@ import type { configurationState } from '../utils/types'
 
 const configurationStore = useConfigurationStore()
 
-const { configurations, loading, error, configuration } = storeToRefs(configurationStore) as {
-  configurations: Ref<configurationState['configurations']>
+const { loading, configuration } = storeToRefs(configurationStore) as {
   loading: Ref<configurationState['loading']>
   error: Ref<configurationState['error']>
   configuration: Ref<configurationState['configuration']>
@@ -24,12 +23,10 @@ const configurationId = route.params.id as string
 const router = useRouter()
 
 onMounted(async () => {
-  // Check if the configuration exists in the store
   const existingConfig = configurationStore.getConfigById(configurationId)
   if (existingConfig) {
     configuration.value = existingConfig
   } else {
-    // Fetch the configurations from the server if not available in the store
     await fetchConfigurations()
     configuration.value = configurationStore.getConfigById(configurationId)
   }
