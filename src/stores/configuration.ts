@@ -4,22 +4,13 @@ import axios from 'axios'
 import { useToast } from 'vue-toastification'
 
 const baseUrl = 'http://localhost:8000/configs'
-export const useConfigurationStore = defineStore<
-  string,
-  configurationState,
-  {},
-  {
-    fetchConfigurations(): Promise<void>
-    deleteConfiguration(configurationId: string): Promise<boolean | void>
-    addConfiguration(newConfiguration: configurationType): Promise<configurationType | void>
-    updateConfiguration(newConfiguration: configurationType): Promise<configurationType | void>
-  }
->('configuration', {
+export const useConfigurationStore = defineStore('configuration', {
   state: (): configurationState => ({
     configurations: [],
     loading: false,
     error: null,
-    configuration: null
+    configuration: null,
+    searchTerm: ''
   }),
   getters: {
     getConfigById: (state) => {
@@ -27,6 +18,15 @@ export const useConfigurationStore = defineStore<
         state.configurations.find(
           (configuration: configurationType) => configuration.id === configId
         )
+    },
+    filteredConfigurations: (state) => {
+      const searchTerm = state.searchTerm.toLowerCase()
+      return state.configurations.filter(
+        (config) =>
+          config.name.toLowerCase().includes(searchTerm) ||
+          config.description.toLowerCase().includes(searchTerm) ||
+          JSON.stringify(config.content).toLowerCase().includes(searchTerm)
+      )
     }
   },
   actions: {
@@ -58,7 +58,6 @@ export const useConfigurationStore = defineStore<
     },
     async addConfiguration(newConfiguration: configurationType) {
       const toast = useToast()
-
       try {
         const response = await axios.post(baseUrl, newConfiguration)
         toast.success('Configuration Added Successfully')
