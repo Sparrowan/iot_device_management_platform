@@ -1,6 +1,4 @@
-<script>
-import ConfigurationListVue from '../components/ConfigurationList.vue'
-</script>
+<script></script>
 
 <template>
   <div class="about">
