@@ -1,23 +1,16 @@
 {
   "configs": [
     {
-      "id": "b64b9d7e-5e2c-4b6d-9e59-f72c59417c8e",
-      "name": "Temperature Sensor",
-      "description": "Simulates a temperature sensor device.",
-      "content": {
-        "type": "sensor",
-        "unit": "Celsius",
-        "range": [-40, 125]
-      }
-    },
-    {
       "id": "c4fda30b-4b84-4af6-9d30-cbe33a2a8a2f",
       "name": "Humidity Sensor",
       "description": "Simulates a humidity sensor device.",
       "content": {
         "type": "sensor",
         "unit": "Percentage",
-        "range": [0, 100]
+        "range": [
+          0,
+          100
+        ]
       }
     },
     {
@@ -27,7 +20,10 @@
       "content": {
         "type": "sensor",
         "unit": "Lux",
-        "range": [0, 100000]
+        "range": [
+          0,
+          100000
+        ]
       }
     },
     {
@@ -37,7 +33,10 @@
       "content": {
         "type": "sensor",
         "unit": "Binary",
-        "values": ["motion", "no motion"]
+        "values": [
+          "motion",
+          "no motion"
+        ]
       }
     }
   ]

@@ -24,9 +24,6 @@ const truncatedDescription = computed((): string => {
   <div class="bg-white rounded-xl shadow-md relative">
     <div class="p-4">
       <div class="mb-6">
-        <div class="text-gray-600 my-2">
-          {{ configuration.content?.type?.toUpperCase() || 'N/A' }}
-        </div>
         <h3 class="text-xl font-bold">{{ configuration?.name || 'Untitled' }}</h3>
       </div>
 
@@ -40,10 +37,6 @@ const truncatedDescription = computed((): string => {
       </div>
 
       <div class="flex flex-col lg:flex-row justify-between mb-4">
-        <div class="text-orange-700 mb-3">
-          <i class="pi pi-map-marker text-orange-700"></i>
-          {{ configuration?.location || 'Location not available' }}
-        </div>
         <RouterLink
           :to="'/configurations/' + (configuration?.id || '')"
           class="h-[36px] bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-center text-sm"

@@ -9,10 +9,9 @@ import ConfigurationListing from '@/components/ConfigurationListing.vue'
 
 const configurationStore = useConfigurationStore()
 
-const { configurations, loading, error } = storeToRefs(configurationStore) as {
+const { configurations, loading } = storeToRefs(configurationStore) as {
   configurations: Ref<configurationState['configurations']>
   loading: Ref<configurationState['loading']>
-  error: Ref<configurationState['error']>
 }
 const { fetchConfigurations } = configurationStore
 
