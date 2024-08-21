@@ -27,21 +27,11 @@
       }
     },
     {
-      "id": "ba8f",
+      "id": "5bff",
       "name": "test",
       "description": "",
-      "content": {}
-    },
-    {
-      "id": "454b",
-      "name": "dfdfdfkdjfdk",
-      "description": "",
       "content": {
-        "range": "[10,20]",
-        "others": {
-          "one": 1,
-          "two": 2
-        }
+        "1": "1"
       }
     }
   ]
