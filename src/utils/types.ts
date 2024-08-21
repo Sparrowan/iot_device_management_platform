@@ -15,4 +15,5 @@ export type configurationState = {
   loading: boolean
   error: string | null
   configuration: configurationType | null
+  searchTerm: string
 }
