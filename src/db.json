@@ -2,7 +2,7 @@
   "configs": [
     {
       "name": "Light Sensor",
-      "description": "Simulates a light sensor device.",
+      "description": "Simulates a light sensor device, providing mock data for ambient light levels. This data can be used to test features such as automatic brightness adjustments or triggering actions based on light intensity. The simulation covers a range of lighting conditions, from dim to bright, enabling thorough testing of device responses under different scenarios.",
       "content": {
         "type": "sensor",
         "unit": "Lux",
@@ -11,12 +11,12 @@
           100000
         ]
       },
-      "updatedAt": "2024-08-21T17:16:08.054Z",
+      "updatedAt": "2024-08-21T17:23:07.602Z",
       "id": "d3d9c0f7-23e9-4c3b-9631-b9e146ad4f7a"
     },
     {
       "name": "Motion Detector",
-      "description": "Simulates a motion detector device.",
+      "description": "Simulates a motion detector device, generating mock data that mimics movement detection. This simulation can be used to test features such as security alerts, automated lighting systems, or any application that responds to motion. The simulated data replicates various movement patterns, from slight to rapid motion, allowing comprehensive testing of system behavior under different conditions.",
       "content": {
         "type": "sensor",
         "unit": "Binary",
@@ -25,7 +25,7 @@
           "no motion"
         ]
       },
-      "updatedAt": "2024-08-21T17:06:34.544Z",
+      "updatedAt": "2024-08-21T17:23:59.732Z",
       "id": "f58927e6-8951-4e07-bb7e-02d9a76b3a21"
     }
   ]
