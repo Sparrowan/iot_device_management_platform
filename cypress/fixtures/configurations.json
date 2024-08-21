@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Light Sensor",
+    "description": "Simulates a light sensor device.",
+    "content": {
+      "type": "sensor",
+      "unit": "Lux",
+      "range": [0, 100000]
+    },
+    "updatedAt": "2024-08-21T15:40:33.508Z",
+    "id": "d3d9c0f7-23e9-4c3b-9631-b9e146ad4f7a"
+  },
+  {
+    "id": "f58927e6-8951-4e07-bb7e-02d9a76b3a21",
+    "name": "Motion Detector",
+    "description": "Simulates a motion detector device.",
+    "content": {
+      "type": "sensor",
+      "unit": "Binary",
+      "values": ["motion", "no motion"]
+    },
+    "createdAt": "2024-07-21T14:53:15.332Z"
+  }
+]
