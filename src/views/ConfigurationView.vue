@@ -32,7 +32,7 @@ onMounted(async () => {
   }
 })
 const handleDelete = async () => {
-  if (deleteConfiguration(configurationId)) {
+  if (await deleteConfiguration(configurationId)) {
     await fetchConfigurations()
     router.push('/')
   }
