@@ -7,8 +7,9 @@ export type configurationType = {
     unit: string
     values: string[] | number[]
   }
+  createdAt: string
+  updatedAt?: string
 }
-
 export type configurationState = {
   configurations: configurationType[]
   loading: boolean

@@ -7,6 +7,7 @@ import { useRouter, useRoute } from 'vue-router'
 import type { Ref } from 'vue'
 import type { configurationState } from '../utils/types'
 import { storeToRefs } from 'pinia'
+import { getTimeStamp } from '../utils/functions'
 
 const configurationStore = useConfigurationStore()
 
@@ -52,7 +53,8 @@ const handleSubmit = async () => {
   const newConfiguration = {
     name: form.name,
     description: form.description,
-    content: JSON.parse(form.content.value)
+    content: JSON.parse(form.content.value),
+    ...(configurationId ? { updatedAt: getTimeStamp() } : { createdAt: getTimeStamp() })
   }
   if (configurationId) {
     if (await updateConfiguration(newConfiguration)) {
