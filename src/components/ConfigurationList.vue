@@ -4,6 +4,8 @@ import { useConfigurationStore } from '../stores/configuration'
 import { onMounted } from 'vue'
 import type { configurationState } from '../utils/types'
 import type { Ref } from 'vue'
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
+import ConfigurationListing from '@/components/ConfigurationListing.vue'
 
 const configurationStore = useConfigurationStore()
 
@@ -17,18 +19,23 @@ const { fetchConfigurations } = configurationStore
 onMounted(() => {
   fetchConfigurations()
 })
-
-// Log the configurations for debugging
-console.log('configurations', configurations.value)
 </script>
 
 <template>
-  <h1 class="text-2xl">Config List</h1>
-  <div v-if="loading">Loading...</div>
-  <div v-if="error">Error: {{ error }}</div>
-  <ul v-if="configurations.length">
-    <li v-for="config in configurations" :key="config.id">
-      {{ config.name }}
-    </li>
-  </ul>
+  <section class="bg-blue-50 px-4 py-10">
+    <div class="container-xl lg:container m-auto">
+      <h2 class="text-3xl font-bold text-green-500 mb-6 text-center">Browse Configurations</h2>
+      <div v-if="loading" class="text-center text-gray-500 py-6">
+        <PulseLoader />
+      </div>
+
+      <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <ConfigurationListing
+          v-for="configuration in configurations"
+          :key="configuration.id"
+          :configuration="configuration"
+        />
+      </div>
+    </div>
+  </section>
 </template>
