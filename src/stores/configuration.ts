@@ -12,6 +12,7 @@ export const useConfigurationStore = defineStore<
     fetchConfigurations(): Promise<void>
     deleteConfiguration(configurationId: string): Promise<boolean | void>
     addConfiguration(newConfiguration: configurationType): Promise<configurationType | void>
+    updateConfiguration(newConfiguration: configurationType): Promise<configurationType | void>
   }
 >('configuration', {
   state: (): configurationState => ({
@@ -64,6 +65,17 @@ export const useConfigurationStore = defineStore<
         return response.data
       } catch (error) {
         console.error('Error adding configuration', error)
+        toast.error('Configuration Was Not Added')
+      }
+    },
+    async updateConfiguration(newConfiguration: configurationType) {
+      const toast = useToast()
+      try {
+        const response = await axios.put(`${baseUrl}/${this.configuration?.id}`, newConfiguration)
+        toast.success('Configuration Updated Successfully')
+        return response.data
+      } catch (error) {
+        console.error('Error fetching job', error)
         toast.error('Configuration Was Not Added')
       }
     }
