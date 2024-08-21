@@ -68,7 +68,6 @@ const handleSubmit = async () => {
 }
 const text = `${configurationId ? 'Edit' : 'Add'} Configuration`
 </script>
-
 <template>
   <section class="bg-green-50">
     <div class="container m-auto max-w-2xl py-24">
