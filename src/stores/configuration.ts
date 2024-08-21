@@ -46,8 +46,8 @@ export const useConfigurationStore = defineStore<
         if (confirm) {
           await axios.delete(`http://localhost:8000/configs/${configurationId}`)
           toast.success('Configuration Deleted Successfully')
+          return true
         }
-        return true
       } catch (error) {
         console.error('Error deleting configuration', error)
         toast.error('Configuration Not Deleted')
