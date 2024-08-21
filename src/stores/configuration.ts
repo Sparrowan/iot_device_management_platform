@@ -75,7 +75,7 @@ export const useConfigurationStore = defineStore('configuration', {
         return response.data
       } catch (error) {
         console.error('Error fetching configuration', error)
-        toast.error('Configuration Was Not Added')
+        toast.error('Configuration Was Not Updated')
       }
     }
   }
